@@ -3,7 +3,7 @@ USER root
 RUN docker-php-ext-install mysqli pdo_mysql pcntl
 COPY ./build/nginx.conf /etc/nginx/nginx.conf
 USER 1000
-COPY ./freescout /app
+COPY ./ /app
 COPY ./build/composer.phar /app
 USER root
 RUN chown -R 1000:1000 /app
