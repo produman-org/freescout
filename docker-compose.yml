@@ -6,6 +6,5 @@ services:
             context: ./
             args:
                 - APP_URL=https://freescout.produman.app
-
         profiles:
             - do-not-start

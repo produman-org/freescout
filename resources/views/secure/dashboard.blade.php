@@ -21,6 +21,11 @@
                                 $main_folders = $mailbox->getMainFolders();
                             @endphp
                             @foreach ($main_folders as $folder)
+                                {{-- Только админ видит неназначенные --}}
+                                @php if(($folder->type == App\Folder::TYPE_UNASSIGNED || $folder->type == App\Folder::TYPE_ASSIGNED) && !Auth::user()->isAdmin()) {
+                                    continue;
+                                }
+                                @endphp
                                 @php
                                     $active_count = $folder->getCount($main_folders);
                                 @endphp
@@ -40,7 +45,7 @@
                             @endif
                         </div>
                     </div>
-                    
+
                     <div class="dash-card-footer">
                         <div class="btn-group btn-group-justified btn-group-rounded">
                             @if (\Eventy::filter('mailbox.show_buttons', true, $mailbox) && Auth::user()->can('viewMailboxMenu', Auth::user()))
