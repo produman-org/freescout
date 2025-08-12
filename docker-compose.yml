@@ -1,0 +1,11 @@
+services:
+    freescout:
+        image: cr.yandex/crp6roa8m8l4qj7c0dhj/freescout:1.8.190
+        build:
+            dockerfile: ./build/Dockerfile
+            context: ./
+            args:
+                - APP_URL=https://freescout.produman.app
+
+        profiles:
+            - do-not-start

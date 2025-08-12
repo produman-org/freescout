@@ -13,6 +13,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
+        'Illuminate\Auth\Events\Authenticated' => [
+            'App\Listeners\AutenticatedUser',
+        ],
         'Illuminate\Mail\Events\MessageSending' => [
             'App\Listeners\ProcessSwiftMessage',
         ],
